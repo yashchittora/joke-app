@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:joke/home.dart';
+import 'package:joke/shayari.dart';
 
 void main() {
   runApp(const MainApp());
@@ -15,9 +16,11 @@ class MainApp extends StatefulWidget {
 class _MainAppState extends State<MainApp> {
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: HomePage(),
-    );
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: HomePage(),
+        routes: {
+          '/spage': (context) => SPage(),
+        });
   }
 }

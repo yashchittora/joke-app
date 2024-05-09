@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -47,47 +46,61 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.deepPurple.shade200,
       appBar: AppBar(
-        title: const Text(
-          "Jokes",
-        ),
-        backgroundColor: Colors.pink.shade200,
+        title: const Text("Jokes", style: TextStyle(color: Colors.white)),
+        backgroundColor: Colors.deepPurple.shade300,
       ),
+      drawer: Drawer(
+          backgroundColor: Colors.deepPurple.shade300,
+          child: Column(children: [
+            ListTile(
+              leading: Icon(Icons.man),
+              title: Text("Shayaris"),
+              onTap: () {
+                Navigator.pushNamed(context, '/spage');
+              },
+            )
+          ])),
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.all(50.0),
+          padding: const EdgeInsets.all(20.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(32), color: Colors.red),
+                padding: const EdgeInsets.all(0),
+                decoration:
+                    BoxDecoration(borderRadius: BorderRadius.circular(32)),
                 height: 200,
                 width: 250,
                 child: Center(
                   child: Text(
                     jokes[count].toString(),
                     textAlign: TextAlign.center,
-                    style: const TextStyle(color: Colors.white),
+                    style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 1),
                   ),
                 ),
               ),
               const SizedBox(height: 50),
-              
               ElevatedButton(
-                onPressed: (){
+                onPressed: () {
                   increase();
                   HapticFeedback.heavyImpact();
-                  },
-                child: const Text("Change Joke",
-                style: TextStyle(color: Colors.white),),
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12), // <-- Radius
-                  ),
-                  backgroundColor: Colors.black
+                },
+                child: const Text(
+                  "Change Joke",
+                  style: TextStyle(color: Colors.white),
                 ),
+                style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12), // <-- Radius
+                    ),
+                    backgroundColor: Colors.black),
               )
             ],
           ),
