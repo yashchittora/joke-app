@@ -48,15 +48,23 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Colors.deepPurple.shade200,
       appBar: AppBar(
+        leading: Builder(builder: (context) {
+          return IconButton(
+            icon: Icon(Icons.menu, color: Colors.white),
+            onPressed: () =>
+                Scaffold.of(context).openDrawer(), // <-- Opens drawer.
+          );
+        }),
         title: const Text("Jokes", style: TextStyle(color: Colors.white)),
         backgroundColor: Colors.deepPurple.shade300,
       ),
       drawer: Drawer(
           backgroundColor: Colors.deepPurple.shade300,
           child: Column(children: [
+            DrawerHeader(child: Container(child: Icon(Icons.star))),
             ListTile(
-              leading: Icon(Icons.man),
-              title: Text("Shayaris"),
+              leading: Icon(Icons.favorite, color: Colors.white),
+              title: Text("Shayaris", style: TextStyle(color: Colors.white)),
               onTap: () {
                 Navigator.pushNamed(context, '/spage');
               },
